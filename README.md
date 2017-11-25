@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MusicSpectrum
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
@@ -25,3 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# p5js-with-Angular4
+Implement the p5js libraries with Angular4
+>>>>>>> be100e7498d34bda8824cb305254d5e380bf4dad
