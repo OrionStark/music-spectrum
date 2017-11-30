@@ -1,5 +1,7 @@
 import { Component, HostListener, ElementRef } from '@angular/core';
 import {trigger, animate, style, group, animateChild, query, stagger, transition} from '@angular/animations';
+import * as p5 from 'p5';
+import * as mojs from 'mo-js';
 const routerTransition = trigger('routerTransition', [
   transition('* <=> *', [
     query(':enter, :leave', style({ position: 'fixed', width:'100%' })
