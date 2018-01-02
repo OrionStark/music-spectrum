@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 declare var p5: any;
 import * as mojs from 'mo-js';
 
@@ -8,30 +9,177 @@ import * as mojs from 'mo-js';
   styleUrls: ['./music.component.css']
 })
 export class MusicComponent implements OnInit {
-  private myanotherShape: any;
-  play: any;
+  public nowMusic:String = "";
+  private play:any;
   constructor(public el: ElementRef) {
-    this.createMyShape();
    }
-  ngOnInit() {
+  
+  ngAfterViewInit() {
+    var musicN = "";
+    this.nowMusic = musicN;
     var myMusic = function (myMusic) {
-      var music;
+      var music = null;
       var fft;
       var myPeak;
       var canvas;
       var widthParent = document.getElementById("body").clientWidth;
       var heightParent = document.getElementById("body").clientHeight;
-      var myshape
+      var myshape;
+      var _playpauseButton_;
+      var _stopButton_;
+      var music_buffer_list = [];
+      var musics = [
+        new Array("Zed", "../../assets/music/01 Addicted to a Memory (feat. Bahar.m4a", "Addicted to a Memory"),
+        new Array("Selena Gomez", "../../assets/music/02 I Want You to Know (feat. Selena.m4a", "I Want you to know"),
+        new Array("Zed", "../../assets/music/04 Transmission (feat. Logic & X Amb.m4a", "Transmission"),
+        new Array("Zed", "../../assets/music/19 Alive.m4a", "Alive"),
+        new Array("Selena Gomez", "../../assets/music/Selena Gomez - My Dilemma 2.0.mp3", "My Dilemma")
+      ];
+
+
+      var player_init = function () {
+        var _artist_name = document.getElementById('artist_name');
+        var _music_name = document.getElementById('music_name');
+        if( document.readyState ) {
+          _playpauseButton_ = document.getElementById('play_pause');
+          _stopButton_ = document.getElementById('stop');
+          var _buttonCollections = {
+            button1: document.getElementById('1'),
+            button2: document.getElementById('2'),
+            button3: document.getElementById('3'),
+            button4: document.getElementById('4'),
+            button5: document.getElementById('5'),
+            button6: document.getElementById('6')
+          };
+          _buttonCollections.button1.addEventListener('click', function() {
+            if (music.isPlaying()) {
+              _playpauseButton_.innerText = "Pause";
+              music.stop();
+              music = music_buffer_list[0];
+              _artist_name.innerText = musics[0][0];
+              _music_name.innerText = musics[0][2];
+              music.play();
+            } else {
+              _playpauseButton_.innerText = "Pause";
+              music = music_buffer_list[0];
+              _artist_name.innerText = musics[0][0];
+              _music_name.innerText = musics[0][2];
+              music.play();
+            }
+          });
+          _buttonCollections.button2.addEventListener('click', function() {
+            if (music.isPlaying()) {
+              _playpauseButton_.innerText = "Pause";
+              music.stop();
+              music = music_buffer_list[1];
+              _artist_name.innerText = musics[1][0];
+              _music_name.innerText = musics[1][2];
+              music.play();
+            } else {
+              _playpauseButton_.innerText = "Pause";
+              music = music_buffer_list[1];
+              _artist_name.innerText = musics[1][0];
+              _music_name.innerText = musics[1][2];
+              music.play();
+            }
+          });
+          _buttonCollections.button3.addEventListener('click', function() {
+            if (music.isPlaying()) {
+              _playpauseButton_.innerText = "Pause";
+              music.stop();
+              music = music_buffer_list[2];
+              _artist_name.innerText = musics[2][0];
+              _music_name.innerText = musics[2][2];
+              music.play();
+            } else {
+              _playpauseButton_.innerText = "Pause";
+              music = music_buffer_list[2];
+              _artist_name.innerText = musics[2][0];
+              _music_name.innerText = musics[2][2];
+              music.play();
+            }
+          });
+          _buttonCollections.button4.addEventListener('click', function() {
+            if (music.isPlaying()) {
+              _playpauseButton_.innerText = "Pause";
+              music.stop();
+              music = music_buffer_list[3];
+              _artist_name.innerText = musics[3][0];
+              _music_name.innerText = musics[3][2];
+              music.play();
+            } else {
+              _playpauseButton_.innerText = "Pause";
+              music = music_buffer_list[3];
+              _artist_name.innerText = musics[3][0];
+              _music_name.innerText = musics[3][2];
+              music.play();
+            }
+          });
+          _buttonCollections.button5.addEventListener('click', function() {
+            if (music.isPlaying()) {
+              _playpauseButton_.innerText = "Pause";
+              music.stop();
+              music = music_buffer_list[4];
+              _artist_name.innerText = musics[4][0];
+              _music_name.innerText = musics[4][2];
+              music.play();
+            } else {
+              _playpauseButton_.innerText = "Pause";
+              music = music_buffer_list[4];
+              _artist_name.innerText = musics[4][0];
+              _music_name.innerText = musics[4][2];
+              music.play();
+            }
+          });
+          _buttonCollections.button6.addEventListener('click', function() {
+            if (music.isPlaying()) {
+              _playpauseButton_.innerText = "Pause";
+              music.stop();
+              music = music_buffer_list[5];
+              music.play();
+            } else {
+              _playpauseButton_.innerText = "Pause";
+              music = music_buffer_list[5];
+              music.play();
+            }
+          });
+
+          _playpauseButton_.addEventListener('click', function() {
+            if (music.isPlaying()) {
+              this.innerText = "Play"
+              music.pause();
+            } else {
+              this.innerText = "Pause"
+              music.loop();
+            }
+          });
+  
+          _stopButton_.addEventListener('click', function() {
+            if (music.isPlaying()) {
+              music.stop();
+              _playpauseButton_.innerText = "Play";
+            } else {
+              //
+            }
+          });
+        }
+      }
+
+
       myMusic.preload = function () {
-        music = myMusic.loadSound("../../assets/music/01 Addicted to a Memory (feat. Bahar.m4a");
+        for (var i = 0; i < musics.length; i++) {
+          music_buffer_list.push(myMusic.loadSound(musics[i][1]));
+        }
+        music = music_buffer_list[0];
+        musicN = musics[0][0];
       };
 
       myMusic.setup = function () {
+        player_init();
         canvas = myMusic.createCanvas(widthParent - 30,heightParent);
         fft = new p5.FFT();
         music.amp(1);
         myPeak = new p5.PeakDetect();
-        music.loop();
         myshape = new mojs.Burst(
           {
             radius: { 0 : 150 },
@@ -94,11 +242,9 @@ export class MusicComponent implements OnInit {
       }
     }
 
-    // make an object
-    this.play = new p5(myMusic, "body");
+    this.play = new p5(myMusic, "body", true);
   }
 
-  createMyShape(){
-    
+  ngOnInit() {
   }
 }

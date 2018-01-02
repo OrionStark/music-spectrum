@@ -1,7 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {  MatIconModule,
+          MatTabsModule, 
+          MatToolbarModule,
+          MatButtonModule,
+          MatCardModule,
+          MatMenuModule } from '@angular/material';
 // Page component
 import { AppComponent } from './app.component';
 import { MusicComponent } from './music/music.component';
@@ -13,8 +18,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const rout_data: Routes = [
-  { path: 'music', component: MusicComponent, data: { state: 'music', play: 'test' } },
-  { path: '', component: LandingPageComponent }
+  { path: '', component: MusicComponent, data: { state: 'music', play: 'test' } }
 ];
 
 @NgModule({
@@ -29,7 +33,13 @@ const rout_data: Routes = [
     ),
     BrowserModule,
     BrowserAnimationsModule,
-    HttpModule
+    HttpModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatIconModule,
+    MatMenuModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
