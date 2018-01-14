@@ -86,21 +86,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="container">
-                                    <div class="myCard" id="card6">
-                                        <div class="card_head">
-                
-                                        </div>
-                                        <div class="card_body">
-                
-                                        </div>
-                                        <div clas="card_footer">
-                                            <button mat-raised-button id="6">Play</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,8 +99,14 @@
         </mat-tab-group>
         <h2 id="artist_name">Artist</h2>
         <h3 id="music_name">Music Name</h3>
-        <button mat-raised-button id="play_pause" color="primary">Play</button>
-        <button mat-raised-button id="stop" color="warn">Stop</button>
+        <button mat-raised-button id="play_pause" color="primary">
+        <mat-icon>play_circle_outline</mat-icon>
+            Play
+        </button>
+        <button mat-raised-button id="stop" color="warn">
+            <mat-icon>stop</mat-icon>
+            Stop
+        </button>
     </div>
 </div>
 <div class="jumbotron content">

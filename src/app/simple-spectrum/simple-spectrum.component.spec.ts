@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LandingPageComponent } from './landing-page.component';
+import { SimpleSpectrumComponent } from './simple-spectrum.component';
 
-describe('LandingPageComponent', () => {
-  let component: LandingPageComponent;
-  let fixture: ComponentFixture<LandingPageComponent>;
+describe('SimpleSpectrumComponent', () => {
+  let component: SimpleSpectrumComponent;
+  let fixture: ComponentFixture<SimpleSpectrumComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandingPageComponent ]
+      declarations: [ SimpleSpectrumComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LandingPageComponent);
+    fixture = TestBed.createComponent(SimpleSpectrumComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

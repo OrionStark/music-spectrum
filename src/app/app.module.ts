@@ -15,17 +15,18 @@ import { MusicComponent } from './music/music.component';
 import { Route } from '@angular/router/src/config';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { SimpleSpectrumComponent } from './simple-spectrum/simple-spectrum.component';
 
 const rout_data: Routes = [
-  { path: '', component: MusicComponent, data: { state: 'music', play: 'test' } }
+  { path: '', component: MusicComponent, data: { state: 'music' } },
+  { path: 'simple', component: SimpleSpectrumComponent, data: { state: 'simple' } }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     MusicComponent,
-    LandingPageComponent
+    SimpleSpectrumComponent
   ],
   imports: [
     RouterModule.forRoot(

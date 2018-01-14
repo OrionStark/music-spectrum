@@ -48,8 +48,7 @@ export class MusicComponent implements OnInit {
             button2: document.getElementById('2'),
             button3: document.getElementById('3'),
             button4: document.getElementById('4'),
-            button5: document.getElementById('5'),
-            button6: document.getElementById('6')
+            button5: document.getElementById('5')
           };
           _buttonCollections.button1.addEventListener('click', function() {
             if (music.isPlaying()) {
@@ -131,18 +130,6 @@ export class MusicComponent implements OnInit {
               music.play();
             }
           });
-          _buttonCollections.button6.addEventListener('click', function() {
-            if (music.isPlaying()) {
-              _playpauseButton_.innerText = "Pause";
-              music.stop();
-              music = music_buffer_list[5];
-              music.play();
-            } else {
-              _playpauseButton_.innerText = "Pause";
-              music = music_buffer_list[5];
-              music.play();
-            }
-          });
 
           _playpauseButton_.addEventListener('click', function() {
             if (music.isPlaying()) {
@@ -217,7 +204,6 @@ export class MusicComponent implements OnInit {
           myMusic.stroke(227, 239, 0);
           myshape.play();
         }
-
         myMusic.ellipse(0, 0, 2 * rad, 2 * rad);
         for(var i = 0; i < waveform.length; i += 3){
           var x = r * myMusic.cos(i * 2 * myMusic.PI / waveform.length);
@@ -225,7 +211,6 @@ export class MusicComponent implements OnInit {
           var x2 = (r + waveform[i] * 80) * myMusic.cos(i * 2 * myMusic.PI / waveform.length);
           var y2 = (r + waveform[i] * 80) * myMusic.sin(i * 2 * myMusic.PI / waveform.length);
           myMusic.line(x, y, x2, y2);
-          myMusic.point(x, y);
         }
 
         myMusic.beginShape();
@@ -246,5 +231,9 @@ export class MusicComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.play = null;
   }
 }
